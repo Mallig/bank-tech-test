@@ -3,8 +3,9 @@ describe('Account', function() {
   var date 
 
   beforeEach(function() {
-    account = new Account()
-    date = { toString: function() { return "Mon Oct 08 2018 15:10:40 GMT+0100" } } 
+    mockStatement = { transactions: [], store: function(x) { this.transactions.push(x) } }
+    mockDate = { toString: function() { return "Mon Oct 08 2018 15:10:40 GMT+0100" } } 
+    account = new Account(mockStatement)
   })
 
   it('should initialise with a balance of zero', function() {
@@ -26,10 +27,8 @@ describe('Account', function() {
     })
 
     it('should log deposits with timestamp', function() {
-      spyOn(date, 'toString').and.callThrough()
-      account.deposit(200, date)
-      expect(date.toString).toHaveBeenCalled()
-      expect(account.transactions).toContain([200, "Mon Oct 08 2018 15:10:40 GMT+0100"])
+      account.deposit(200, mockDate)
+      expect(account.statement.transactions).toContain([200, "Mon Oct 08 2018 15:10:40 GMT+0100"])
     })
   })
 

@@ -1,12 +1,12 @@
-function Account() {
+function Account(statement = new Statement()) {
   this.balance = 0
-  this.transactions = []
+  this.statement = statement
 }
 
 Account.prototype.deposit = function(money, date = Date()) {
   if (Number.isInteger(money) && money > 0) {
     this.balance += money
-    this.transactions.push([money, date.toString()])
+    this.statement.store([money, date.toString()])
   } else {
     throw 'Invalid deposit amount'
   }
