@@ -22,6 +22,12 @@ describe('Account', function() {
     it('should only accept positive numbers', function() {
       expect(function() {account.deposit(-200)}).toThrow('Invalid deposit amount')
     })
+
+    it('should log the transaction', function() {
+      account.deposit(200)
+      expect(account.transactions).toContain(200)
+    })
+
   })
 
   describe('withdraw', function() {
