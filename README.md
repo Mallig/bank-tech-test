@@ -61,4 +61,9 @@ Displays transaction    |
 ```
 
 Is a 'Transaction' Class overkill here?
+Is a 'Statement' Class overkill here?
 
+### Code
+
+Clients will access their accounts through the console, actions on the account will be limited to 'deposit', 'withdraw', and 'statement'.
+Accounts will not have any form of security.
