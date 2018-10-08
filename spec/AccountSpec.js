@@ -33,6 +33,14 @@ describe('Account', function() {
       account.withdraw(50)
       expect(account.balance).toEqual(150)
     })
+
+    it('should only accept integers', function() {
+      expect(function() {account.withdraw("50")}).toThrow('Invalid withdrawal amount')
+    })
+
+    it('should only accept positive numbers', function() {
+      expect(function() {account.withdraw(-50)}).toThrow('Invalid withdrawal amount')
+    })
   })
 
 
