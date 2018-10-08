@@ -12,6 +12,6 @@ describe('Statement', function() {
 
   it('should store transactions', function() {
     statement.store(mockTransaction)
-    expect(statement.transactions).toEqual([mockTransaction])
+    expect(statement.transactions).toContain(mockTransaction)
   })
 })
