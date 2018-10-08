@@ -9,8 +9,16 @@ describe('Account', function() {
     expect(account.balance).toEqual(0)
   })
 
-  it('should accept a deposit', function() {
-    account.deposit(200)
-    expect(account.balance).toEqual(200)
+  describe('deposit', function() {
+    it('should accept a deposit', function() {
+      account.deposit(200)
+      expect(account.balance).toEqual(200)
+    })
+
+    it('should only accept integers', function() {
+      expect(function() {account.deposit("200")}).toThrow('Invalid deposit amount')
+    })
   })
+
+
 })

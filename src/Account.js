@@ -3,5 +3,10 @@ function Account() {
 }
 
 Account.prototype.deposit = function(money) {
-  this.balance+= money
+  if (Number.isInteger(money)) {
+    this.balance+= money
+  } else {
+    throw 'Invalid deposit amount'
+  }
+
 }
