@@ -4,6 +4,12 @@
 
 This has been written as a practice tech test, the first review taking place after two days on the project.
 
+Stack:
+* Written in Javascript
+* Tested with Jasmine
+* No front end UI
+* No back end database
+
 ### Requirements
 
 * Interact with code through IRB/JS console.
@@ -13,18 +19,21 @@ This has been written as a practice tech test, the first review taking place aft
 
 #### User Stories
 
+```
 As a cog in the machine
 So that my money is secure
 I can deposit it at a bank
-
+```
+```
 As a big spender
 So that I can buy nice things
 I can withdraw my money from the bank
-
+```
+```
 As an organised person
 So that I can track my finances
 I can see a statement of recent transactions
-
+```
 #### Class Responsibility Collaborator Cards
 
 Client
@@ -37,7 +46,7 @@ Can deposit/withdraw |
   from account       |
 ```
 
-Account 
+Account
 
 ```
 Responsibility          | Collaborator
