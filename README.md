@@ -24,3 +24,32 @@ I can withdraw my money from the bank
 As an organised person
 So that I can track my finances
 I can see a statement of recent transactions
+
+#### Class Responsibility Collaborator Cards
+
+Client
+
+```
+Responsibility       | Collaborator
+------------------------------------
+Has an account       | Account
+Can deposit/withdraw |
+  from account       |
+```
+
+Account 
+
+```
+Responsibility          | Collaborator
+--------------------------------------
+Has a balance           | Client
+Can increase/decrease   | 
+  balance               |
+Timestamps transactions |
+Displays transaction    |
+  history               |
+
+```
+
+Is a 'Transaction' Class overkill here?
+
