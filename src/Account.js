@@ -11,7 +11,7 @@ Account.prototype.deposit = function(money) {
 }
 
 Account.prototype.withdraw = function(money) {
-  if (Number.isInteger(money) && money > 0) {
+  if (Number.isInteger(money) && money > 0 && money < this.balance) {
     this.balance -= money
   } else {
     throw 'Invalid withdrawal amount'

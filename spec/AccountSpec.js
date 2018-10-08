@@ -41,6 +41,10 @@ describe('Account', function() {
     it('should only accept positive numbers', function() {
       expect(function() {account.withdraw(-50)}).toThrow('Invalid withdrawal amount')
     })
+
+    it('should not reduce balance past zero', function() {
+      expect(function() {account.withdraw(250)}).toThrow('Invalid withdrawal amount')
+    })
   })
 
 
