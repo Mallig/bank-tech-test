@@ -5,3 +5,11 @@ function Statement() {
 Statement.prototype.store = function(transaction) {
   this.transactions.push(transaction)
 }
+
+Statement.prototype.display = function() {
+  result = 'date || credit || debit || balance'
+  this.transactions.forEach(function(transaction) {
+    result = result.concat('\n', `${transaction.date} || ${transaction.amount} || ${transaction.type} ||`)
+  })
+  return result
+}
