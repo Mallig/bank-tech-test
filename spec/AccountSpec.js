@@ -24,5 +24,16 @@ describe('Account', function() {
     })
   })
 
+  describe('withdraw', function() {
+    beforeEach(function() {
+      account.deposit(200)
+    })
+
+    it('should reduce the account balance', function() {
+      account.withdraw(50)
+      expect(account.balance).toEqual(150)
+    })
+  })
+
 
 })
