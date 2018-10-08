@@ -40,7 +40,7 @@ Client
 
 ```
 Responsibility       | Collaborator
-------------------------------------
+-----------------------------------
 Has an account       | Account
 Can deposit/withdraw |
   from account       |
@@ -57,11 +57,33 @@ Can increase/decrease   |
 Timestamps transactions |
 Displays transaction    |
   history               |
-
 ```
 
-Is a 'Transaction' Class overkill here?
-Is a 'Statement' Class overkill here?
+Statement
+
+```
+Responsibility    | Collaborator
+--------------------------------
+Has a list of     | Account
+  transactions    |
+Can print the     |
+  transactions    |
+Is associated     |
+  with an account |
+```
+
+Transaction
+
+```
+Responsibility           | Collaborator
+---------------------------------------
+The transaction type     | Statement
+The change in balance    | 
+When it happens          |
+Is stored on the account |
+  statement              |
+```
+
 
 ### Code
 
