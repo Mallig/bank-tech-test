@@ -1,9 +1,9 @@
 describe('Transaction', function() {
   beforeEach(function() {
-    depositTransaction = new Transaction('deposit', 200, 'today')
+    depositTransaction = new Transaction(time = 'today')
   })
 
   it('has a date/time stamp', function() {
-    expect(transaction.time).toEqual('today')
+    expect(depositTransaction.time).toEqual('today')
   })
 })
