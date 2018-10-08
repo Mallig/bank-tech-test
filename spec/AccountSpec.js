@@ -1,10 +1,10 @@
 describe('Account', function() {
   var account
-  var date 
+  // var mockDate 
 
   beforeEach(function() {
     mockStatement = { transactions: [], store: function(x) { this.transactions.push(x) } }
-    mockDate = { toString: function() { return "Mon Oct 08 2018 15:10:40 GMT+0100" } } 
+    // mockDate = { toString: function() { return "Mon Oct 08 2018 15:10:40 GMT+0100" } } 
     account = new Account(mockStatement)
   })
 
@@ -26,10 +26,10 @@ describe('Account', function() {
       expect(function() {account.deposit(-200)}).toThrow('Invalid deposit amount')
     })
 
-    it('should log deposits with timestamp', function() {
-      account.deposit(200, mockDate)
-      expect(account.statement.transactions).toContain([200, "Mon Oct 08 2018 15:10:40 GMT+0100"])
-    })
+    // it('should log deposits with timestamp', function() {
+    //   account.deposit(200, mockDate)
+    //   expect(account.statement.transactions).toContain([200, "Mon Oct 08 2018 15:10:40 GMT+0100"])
+    // })
   })
 
   describe('withdraw', function() {
