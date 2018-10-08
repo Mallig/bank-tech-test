@@ -8,4 +8,9 @@ describe('Account', function() {
   it('should initialise with a balance of zero', function() {
     expect(account.balance).toEqual(0)
   })
+
+  it('should accept a deposit', function() {
+    account.deposit(200)
+    expect(account.balance).toEqual(200)
+  })
 })
