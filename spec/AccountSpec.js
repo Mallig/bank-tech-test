@@ -1,8 +1,10 @@
 describe('Account', function() {
   var account
+  var date 
 
   beforeEach(function() {
     account = new Account()
+    date = { toString: function() { return "Mon Oct 08 2018 15:10:40 GMT+0100" } } 
   })
 
   it('should initialise with a balance of zero', function() {
@@ -23,11 +25,12 @@ describe('Account', function() {
       expect(function() {account.deposit(-200)}).toThrow('Invalid deposit amount')
     })
 
-    it('should log the transaction', function() {
-      account.deposit(200)
-      expect(account.transactions).toContain(200)
+    it('should log deposits with timestamp', function() {
+      spyOn(date, 'toString').and.callThrough()
+      account.deposit(200, date)
+      expect(date.toString).toHaveBeenCalled()
+      expect(account.transactions).toContain([200, "Mon Oct 08 2018 15:10:40 GMT+0100"])
     })
-
   })
 
   describe('withdraw', function() {
@@ -52,6 +55,4 @@ describe('Account', function() {
       expect(function() {account.withdraw(250)}).toThrow('Invalid withdrawal amount')
     })
   })
-
-
 })
