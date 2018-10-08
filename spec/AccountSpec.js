@@ -5,7 +5,7 @@ describe('Account', function() {
     account = new Account()
   })
 
-  it('should have a balance', function() {
-    expect(account.balance()).toBe
+  it('should initialise with a balance of zero', function() {
+    expect(account.balance).toEqual(0)
   })
 })
