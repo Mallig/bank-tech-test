@@ -18,6 +18,10 @@ describe('Account', function() {
     it('should only accept integers', function() {
       expect(function() {account.deposit("200")}).toThrow('Invalid deposit amount')
     })
+    
+    it('should only accept positive numbers', function() {
+      expect(function() {account.deposit(-200)}).toThrow('Invalid deposit amount')
+    })
   })
 
 
