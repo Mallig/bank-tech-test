@@ -4,38 +4,46 @@ function Account(statement = new Statement(), transaction = Transaction) {
   this.transaction = transaction
 }
 
-Account.prototype.deposit = function(money) {
-  money = money * 100
-  if (this._isValidDeposit(money)) {
-    this.balance += money
-    this._generateTransaction(money, 'deposit')
-  } else {
-    throw 'Invalid deposit amount'
-  }
+Account.prototype.deposit = function(amount) {
+  amount = amount * 100
+  this._processTransaction(amount, 'deposit')
 }
 
-Account.prototype.withdraw = function(money) {
-  money = money * 100
-  if (this._isValidWithdrawal(money)) {
-    this.balance -= money
-    this._generateTransaction(money, 'withdrawal')
-  } else {
-    throw 'Invalid withdrawal amount'
-  }
+Account.prototype.withdraw = function(amount) {
+  amount = amount * 100
+  this._processTransaction(amount, 'withdraw')
 }
 
 Account.prototype.printStatement = function() {
   return this.statement._display()
 }
 
-Account.prototype._generateTransaction = function(money, type) {
-  this.statement._store(new this.transaction(money, type, this.balance))
+Account.prototype._generateTransaction = function(amount, type) {
+  this.statement._store(new this.transaction(amount, type, this.balance))
 }
 
-Account.prototype._isValidDeposit = function(money) {
-  return Number.isInteger(money) && money > 0
+Account.prototype._isValidDeposit = function(amount) {
+  return Number.isInteger(amount) && amount > 0
 }
 
-Account.prototype._isValidWithdrawal = function(money) {
-  return Number.isInteger(money) && money > 0 && money < this.balance
+Account.prototype._isValidWithdrawal = function(amount) {
+  return this._isValidDeposit(amount) && amount < this.balance
+}
+
+Account.prototype._isValidTransaction = function(amount, type) {
+  if (type === 'deposit') {
+    return this._isValidDeposit(amount)
+  } else if (type === 'withdraw') {
+    return this._isValidWithdrawal(amount)
+  } else {
+    throw 'Invalid Transaction'
+  }
+}
+
+Account.prototype._processTransaction = function(amount, type) {
+  if (this._isValidTransaction(amount, type)) {
+    balance_change = type === 'deposit' ? amount : -amount
+    this.balance += balance_change
+    this._generateTransaction(amount, type)
+  }
 }

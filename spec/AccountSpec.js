@@ -23,11 +23,13 @@ describe('Account', function() {
     })
 
     it('should only accept amounts with up to two decimal places', function() {
-      expect(function() {account.deposit(200.111)}).toThrow('Invalid deposit amount')
+      account.deposit(200.111)
+      expect(account.balance).toEqual(0)
     })
     
     it('should only accept positive numbers', function() {
-      expect(function() {account.deposit(-200)}).toThrow('Invalid deposit amount')
+      account.deposit(-200)
+      expect(account.balance).toEqual(0)
     })
   })
 
@@ -47,15 +49,18 @@ describe('Account', function() {
     })
 
     it('should only accept numbers with up to two decimal places', function() {
-      expect(function() {account.withdraw(50.111)}).toThrow('Invalid withdrawal amount')
+      account.withdraw(50.111)
+      expect(account.balance).toEqual(20000)
     })
 
     it('should only accept positive numbers', function() {
-      expect(function() {account.withdraw(-50)}).toThrow('Invalid withdrawal amount')
+      account.withdraw(-50)
+      expect(account.balance).toEqual(20000)
     })
 
     it('should not reduce balance past zero', function() {
-      expect(function() {account.withdraw(250)}).toThrow('Invalid withdrawal amount')
+      account.withdraw(250)
+      expect(account.balance).toEqual(20000)
     })
   })
 })
