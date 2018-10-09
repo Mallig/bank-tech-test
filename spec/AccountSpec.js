@@ -1,6 +1,5 @@
 describe('Account', function() {
   var account
-  // var mockDate 
 
   beforeEach(function() {
     mockStatement = { transactions: [], _store: function(x) { this.transactions.push(x) } }
@@ -12,8 +11,9 @@ describe('Account', function() {
   })
 
   describe('deposit', function() {
-    it('should accept a deposit', function() {
+    it('should increase the account balance', function() {
       account.deposit(200)
+      console.log(account.statement)
       expect(account.balance).toEqual(200)
     })
 
