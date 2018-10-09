@@ -7,8 +7,6 @@ Account.prototype.deposit = function(money) {
   if (this._isValidDeposit(money)) {
     this.balance += money
     this._generateTransaction(money, 'deposit')
-    // transaction = new Transaction(money, 'deposit', this.balance)
-    // this.statement.store(transaction)
   } else {
     throw 'Invalid deposit amount'
   }

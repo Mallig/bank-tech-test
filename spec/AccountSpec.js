@@ -25,11 +25,6 @@ describe('Account', function() {
     it('should only accept positive numbers', function() {
       expect(function() {account.deposit(-200)}).toThrow('Invalid deposit amount')
     })
-
-    // it('should log deposits with timestamp', function() {
-    //   account.deposit(200, mockDate)
-    //   expect(account.statement.transactions).toContain([200, "Mon Oct 08 2018 15:10:40 GMT+0100"])
-    // })
   })
 
   describe('withdraw', function() {
