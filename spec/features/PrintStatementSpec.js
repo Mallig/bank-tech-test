@@ -1,15 +1,19 @@
 describe('Printed Statement', function() {
-  var statement
-  var transaction
+  var account
 
   beforeEach(function() {
-    statement = new Statement()
-    transaction = new Transaction(amount = 200, type = 'deposit', balance = 200, date = '14/01/2012')
-    statement.store(transaction)
+    account = new Account()
   })
 
   it('displays transaction history', function() {
-    printout = statement.display()
-    expect(printout).toEqual('date || credit || debit || balance\n14/01/2012 || 200 || || 200')
+    account.deposit(200)
+    var printout = account.printStatement()
+    expect(printout).toEqual('date || credit || debit || balance\n09/10/2018 || 200 || || 200')
+  })
+  it('displays transactions in reverse chronological order', function() {
+    account.deposit(100)
+    account.withdraw(50)
+    var printout = account.printStatement()
+    expect(printout).toEqual('date || credit || debit || balance\n09/10/2018 || || 50 || 50\n09/10/2018 || 100 || || 100')
   })
 })
