@@ -5,6 +5,7 @@ function Account(statement = new Statement(), transaction = Transaction) {
 }
 
 Account.prototype.deposit = function(money) {
+  money = money * 100
   if (this._isValidDeposit(money)) {
     this.balance += money
     this._generateTransaction(money, 'deposit')
@@ -14,6 +15,7 @@ Account.prototype.deposit = function(money) {
 }
 
 Account.prototype.withdraw = function(money) {
+  money = money * 100
   if (this._isValidWithdrawal(money)) {
     this.balance -= money
     this._generateTransaction(money, 'withdrawal')

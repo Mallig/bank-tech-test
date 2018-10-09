@@ -11,7 +11,7 @@ describe('A Client deposits money into their account', function() {
     it('the transaction appears on the statement', function() {
       account.deposit(50)
       statement = account.printStatement()
-      expect(statement).toEqual(`date || credit || debit || balance\n${currentDate} || 50 || || 50`)
+      expect(statement).toEqual(`date || credit || debit || balance\n${currentDate} || 50.00 || || 50.00`)
     })
   })
 })

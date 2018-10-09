@@ -14,12 +14,16 @@ describe('Account', function() {
   describe('deposit', function() {
     it('should increase the account balance', function() {
       account.deposit(200)
-      console.log(account.statement)
-      expect(account.balance).toEqual(200)
+      expect(account.balance).toEqual(20000)
     })
 
-    it('should only accept integers', function() {
-      expect(function() {account.deposit("200")}).toThrow('Invalid deposit amount')
+    it('should accept numbers as strings', function() {
+      account.deposit("200")
+      expect(account.balance).toEqual(20000)
+    })
+
+    it('should only accept amounts with up to two decimal places', function() {
+      expect(function() {account.deposit(200.111)}).toThrow('Invalid deposit amount')
     })
     
     it('should only accept positive numbers', function() {
@@ -34,11 +38,16 @@ describe('Account', function() {
 
     it('should reduce the account balance', function() {
       account.withdraw(50)
-      expect(account.balance).toEqual(150)
+      expect(account.balance).toEqual(15000)
     })
 
-    it('should only accept integers', function() {
-      expect(function() {account.withdraw("50")}).toThrow('Invalid withdrawal amount')
+    it('should accept numbers as strings', function() {
+      account.withdraw("50")
+      expect(account.balance).toEqual(15000)
+    })
+
+    it('should only accept numbers with up to two decimal places', function() {
+      expect(function() {account.withdraw(50.111)}).toThrow('Invalid withdrawal amount')
     })
 
     it('should only accept positive numbers', function() {

@@ -4,7 +4,7 @@ describe('Statement', function() {
 
   beforeEach(function() {
     statement = new Statement()
-    mockTransaction = { _display: function() { return '14/01/2012 || 50 || || 50' } }
+    mockTransaction = { _display: function() { return '14/01/2012 || 50.00 || || 50.00' } }
   })
 
   it('should store transactions', function() {
@@ -15,6 +15,6 @@ describe('Statement', function() {
   it('can print a statement', function() {
     statement._store(mockTransaction)
     var printout = statement._display()
-    expect(printout).toEqual('date || credit || debit || balance\n14/01/2012 || 50 || || 50')
+    expect(printout).toEqual('date || credit || debit || balance\n14/01/2012 || 50.00 || || 50.00')
   })
 })
