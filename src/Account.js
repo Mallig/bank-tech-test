@@ -22,11 +22,11 @@ Account.prototype.withdraw = function(money) {
 }
 
 Account.prototype.printStatement = function() {
-  return this.statement.display()
+  return this.statement._display()
 }
 
 Account.prototype._generateTransaction = function(money, type, trans = Transaction) {
-  this.statement.store(new trans(money, type, this.balance))
+  this.statement._store(new trans(money, type, this.balance))
 }
 
 Account.prototype._isValidDeposit = function(money) {

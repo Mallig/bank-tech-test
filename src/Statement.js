@@ -2,11 +2,11 @@ function Statement() {
   this.transactions = []
 }
 
-Statement.prototype.store = function(transaction) {
+Statement.prototype._store = function(transaction) {
   this.transactions.unshift(transaction)
 }
 
-Statement.prototype.display = function() {
+Statement.prototype._display = function() {
   result = 'date || credit || debit || balance'
   this.transactions.forEach(function(transaction) {
     result = result.concat('\n', transaction._display())

@@ -3,8 +3,7 @@ describe('Account', function() {
   // var mockDate 
 
   beforeEach(function() {
-    mockStatement = { transactions: [], store: function(x) { this.transactions.push(x) } }
-    // mockDate = { toString: function() { return "Mon Oct 08 2018 15:10:40 GMT+0100" } } 
+    mockStatement = { transactions: [], _store: function(x) { this.transactions.push(x) } }
     account = new Account(mockStatement)
   })
 
