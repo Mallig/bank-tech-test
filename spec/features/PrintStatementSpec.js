@@ -10,7 +10,6 @@ describe('Printed Statement', function() {
 
   it('displays transaction history', function() {
     printout = statement.display()
-    console.log(statement.transactions)
     expect(printout).toEqual('date || credit || debit || balance\n14/01/2012 || 200 || || 200')
   })
 })

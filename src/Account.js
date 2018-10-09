@@ -3,10 +3,12 @@ function Account(statement = new Statement()) {
   this.statement = statement
 }
 
-Account.prototype.deposit = function(money, date = Date()) {
+Account.prototype.deposit = function(money) {
   if (Number.isInteger(money) && money > 0) {
     this.balance += money
-    this.statement.store([money, date.toString()])
+    this._generateTransaction(money, 'deposit')
+    // transaction = new Transaction(money, 'deposit', this.balance)
+    // this.statement.store(transaction)
   } else {
     throw 'Invalid deposit amount'
   }
@@ -22,4 +24,8 @@ Account.prototype.withdraw = function(money) {
 
 Account.prototype.printStatement = function() {
   return this.statement.display()
+}
+
+Account.prototype._generateTransaction = function(money, type, trans = Transaction) {
+  this.statement.store(new trans(money, type, this.balance))
 }
