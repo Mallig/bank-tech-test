@@ -19,3 +19,7 @@ Account.prototype.withdraw = function(money) {
     throw 'Invalid withdrawal amount'
   }
 }
+
+Account.prototype.printStatement = function() {
+  return this.statement.display()
+}
