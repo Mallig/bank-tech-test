@@ -9,7 +9,7 @@ Statement.prototype.store = function(transaction) {
 Statement.prototype.display = function() {
   result = 'date || credit || debit || balance'
   this.transactions.forEach(function(transaction) {
-    result = result.concat('\n', `${transaction.date} || ${transaction.amount} || ${transaction.type} ||`)
+    result = result.concat('\n', transaction._display())
   })
   return result
 }

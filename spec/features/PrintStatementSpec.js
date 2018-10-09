@@ -4,13 +4,13 @@ describe('Printed Statement', function() {
 
   beforeEach(function() {
     statement = new Statement()
-    transaction = new Transaction(amount = 200, type = 'deposit', date = '14/01/2012')
+    transaction = new Transaction(amount = 200, type = 'deposit', balance = 200, date = '14/01/2012')
     statement.store(transaction)
   })
 
   it('displays transaction history', function() {
     printout = statement.display()
     console.log(statement.transactions)
-    expect(printout).toEqual('date || credit || debit || balance\n14/01/2012||200||||200')
+    expect(printout).toEqual('date || credit || debit || balance\n14/01/2012 || 200 || || 200')
   })
 })

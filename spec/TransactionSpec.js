@@ -1,6 +1,6 @@
 describe('Transaction', function() {
   beforeEach(function() {
-    depositTransaction = new Transaction(amount = 50, type = 'deposit', date = 'today', balance = 50)
+    depositTransaction = new Transaction(amount = 50, type = 'deposit', balance = 50, date = 'today')
   })
 
   it('has a date/time stamp', function() {
