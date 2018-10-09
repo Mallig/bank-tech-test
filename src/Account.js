@@ -15,6 +15,7 @@ Account.prototype.deposit = function(money) {
 Account.prototype.withdraw = function(money) {
   if (this._isValidWithdrawal(money)) {
     this.balance -= money
+    this._generateTransaction(money, 'withdrawal')
   } else {
     throw 'Invalid withdrawal amount'
   }
