@@ -2,8 +2,9 @@ describe('Account', function() {
   var account
 
   beforeEach(function() {
+    function mockTransaction() {  }
     mockStatement = { transactions: [], _store: function(x) { this.transactions.push(x) } }
-    account = new Account(mockStatement)
+    account = new Account(mockStatement, mockTransaction)
   })
 
   it('should initialise with a balance of zero', function() {

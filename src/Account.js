@@ -1,6 +1,7 @@
-function Account(statement = new Statement()) {
+function Account(statement = new Statement(), transaction = Transaction) {
   this.balance = 0
   this.statement = statement
+  this.transaction = transaction
 }
 
 Account.prototype.deposit = function(money) {
@@ -25,8 +26,8 @@ Account.prototype.printStatement = function() {
   return this.statement._display()
 }
 
-Account.prototype._generateTransaction = function(money, type, trans = Transaction) {
-  this.statement._store(new trans(money, type, this.balance))
+Account.prototype._generateTransaction = function(money, type) {
+  this.statement._store(new this.transaction(money, type, this.balance))
 }
 
 Account.prototype._isValidDeposit = function(money) {
