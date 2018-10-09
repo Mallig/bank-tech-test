@@ -3,7 +3,7 @@ function Statement() {
 }
 
 Statement.prototype.store = function(transaction) {
-  this.transactions.push(transaction)
+  this.transactions.unshift(transaction)
 }
 
 Statement.prototype.display = function() {
